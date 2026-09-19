@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff9f4">
+  <meta name="description" content="Conheça os bolos, doces e salgados artesanais da Xanda e escolha o que combina com sua ocasião.">
+  <title>Produtos | Xanda</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilo.css">
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="js/site.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Xanda, página inicial"><span class="brand-word">xanda<b>.</b></span><small>feito com carinho</small></a>
+      <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-controls="menu-principal" aria-expanded="false"><span></span><span></span></button>
+      <nav class="site-nav" id="menu-principal" aria-label="Navegação principal">
+        <a href="index.html">Início</a>
+        <a href="produtos.html" aria-current="page">Produtos</a>
+        <a href="contato.html">Contato</a>
+        <a class="nav-cta" href="contato.html">Fazer encomenda <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="page-hero container" aria-labelledby="produtos-titulo">
+      <div class="page-hero-text">
+        <p class="eyebrow"><span class="eyebrow-line"></span> Feito com carinho</p>
+        <h1 id="produtos-titulo">Sabores para <em>cada momento.</em></h1>
+        <p>De um bolo para celebrar a pequenas delícias para compartilhar, encontre uma opção para deixar a ocasião ainda mais especial.</p>
+      </div>
+      <span class="page-hero-art" aria-hidden="true">✳</span>
+    </section>
+
+    <nav class="product-nav container" aria-label="Categorias de produtos">
+      <a href="#bolos">Bolos <span>01 ↗</span></a>
+      <a href="#doces">Doces <span>02 ↗</span></a>
+      <a href="#salgados">Salgados <span>03 ↗</span></a>
+    </nav>
+
+    <div class="container">
+      <section class="product-feature" id="bolos" aria-labelledby="bolos-titulo">
+        <div class="product-photo"><img src="assets/bolo-hero.png" alt="Bolo artesanal com cobertura rosa, morangos e flores" width="1536" height="1024"><span class="product-photo-label">Para celebrar</span></div>
+        <div class="product-copy">
+          <p class="eyebrow">01 / Bolos</p>
+          <h2 id="bolos-titulo">O centro das <em>boas lembranças.</em></h2>
+          <p>Um bolo especial torna a comemoração ainda mais memorável. Conte sua ideia e os detalhes da ocasião para planejar sua encomenda.</p>
+          <ul class="product-points"><li>Para aniversários e comemorações</li><li>Detalhes pensados para sua ocasião</li><li>Feitos com carinho</li></ul>
+          <a class="button button-primary" href="contato.html?produto=bolos">Quero encomendar um bolo <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+
+      <section class="product-feature product-feature-reverse" id="doces" aria-labelledby="doces-titulo">
+        <div class="product-photo"><img src="assets/doces.png" alt="Brigadeiros e doces artesanais" width="1254" height="1254" loading="lazy"><span class="product-photo-label">Para adoçar</span></div>
+        <div class="product-copy">
+          <p class="eyebrow">02 / Doces</p>
+          <h2 id="doces-titulo">Pequenos momentos, <em>grandes sorrisos.</em></h2>
+          <p>Doces para compor a mesa, acompanhar uma festa ou simplesmente deixar o encontro mais gostoso.</p>
+          <ul class="product-points"><li>Para dividir com quem você gosta</li><li>Uma escolha para festas e encontros</li><li>Preparados com cuidado</li></ul>
+          <a class="button button-primary" href="contato.html?produto=doces">Quero encomendar doces <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+
+      <section class="product-feature" id="salgados" aria-labelledby="salgados-titulo">
+        <div class="product-photo"><img src="assets/salgados.png" alt="Empadas e torta salgada artesanais" width="1254" height="1254" loading="lazy"><span class="product-photo-label">Para compartilhar</span></div>
+        <div class="product-copy">
+          <p class="eyebrow">03 / Salgados</p>
+          <h2 id="salgados-titulo">Sabor de encontro <em>e conversa.</em></h2>
+          <p>Opções salgadas para reunir as pessoas à mesa e completar os momentos que merecem ser celebrados.</p>
+          <ul class="product-points"><li>Para festas e reuniões</li><li>Para servir e compartilhar</li><li>Com aquele toque caseiro</li></ul>
+          <a class="button button-primary" href="contato.html?produto=salgados">Quero encomendar salgados <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+    </div>
+
+    <section class="product-cta">
+      <div class="container product-cta-inner">
+        <span aria-hidden="true">✳</span>
+        <div><p class="eyebrow">Vamos preparar algo especial?</p><h2>Sua ideia pode virar <em>uma delícia.</em></h2><p>Conte o que você imagina para sua próxima ocasião.</p></div>
+        <a class="button button-light" href="contato.html">Preparar encomenda <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-main"><div><a class="brand footer-brand" href="index.html" aria-label="Xanda, página inicial"><span class="brand-word">xanda<b>.</b></span><small>feito com carinho</small></a><p>Sabores que acompanham histórias<br>e deixam tudo mais especial.</p></div><nav aria-label="Links do rodapé"><a href="index.html">Início</a><a href="produtos.html">Produtos</a><a href="contato.html">Contato</a></nav><a class="footer-top" href="#conteudo">Voltar ao topo ↑</a></div>
+    <div class="container footer-bottom"><span>© <span class="year">2026</span> Xanda. Feito com carinho.</span><span>Bolos • Doces • Salgados</span></div>
+  </footer>
+</body>
+</html>

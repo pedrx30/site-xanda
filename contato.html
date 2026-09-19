@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff9f4">
+  <meta name="description" content="Conte sua ideia para a Xanda e prepare uma mensagem para encomendar bolos, doces e salgados artesanais.">
+  <title>Contato | Xanda</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilo.css">
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="js/site.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Xanda, página inicial"><span class="brand-word">xanda<b>.</b></span><small>feito com carinho</small></a>
+      <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-controls="menu-principal" aria-expanded="false"><span></span><span></span></button>
+      <nav class="site-nav" id="menu-principal" aria-label="Navegação principal">
+        <a href="index.html">Início</a>
+        <a href="produtos.html">Produtos</a>
+        <a href="contato.html" aria-current="page">Contato</a>
+        <a class="nav-cta" href="#pedido-form">Fazer encomenda <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="contact-hero container" aria-labelledby="contato-titulo">
+      <div class="contact-hero-copy">
+        <p class="eyebrow"><span class="eyebrow-line"></span> Vamos conversar</p>
+        <h1 id="contato-titulo">Sua ideia merece um <em>toque especial.</em></h1>
+        <p>Conte o que você está planejando. A Xanda prepara bolos, doces e salgados para deixar cada ocasião mais gostosa.</p>
+        <a class="button button-primary" href="#pedido-form">Preparar minha mensagem <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="contact-hero-image">
+        <img src="assets/doces.png" alt="Brigadeiros e doces artesanais" width="1254" height="1254">
+        <div class="contact-hero-sticker" aria-hidden="true">feito<br><strong>com carinho</strong><br>✳</div>
+      </div>
+    </section>
+
+    <section class="contact-section" aria-labelledby="pedido-titulo">
+      <div class="container contact-layout">
+        <div class="contact-intro">
+          <p class="eyebrow">Sua encomenda começa aqui</p>
+          <h2 id="pedido-titulo">Conte um pouco do <em>seu momento.</em></h2>
+          <p>Escolha a categoria e descreva o que você imagina. Você pode incluir quantidade, sabores, tema e qualquer detalhe que ajude a preparar o pedido.</p>
+          <div class="contact-tip"><span aria-hidden="true">✳</span><p>Tem uma data em mente? Informe no formulário para deixar sua mensagem mais completa.</p></div>
+        </div>
+        <form class="order-form" id="pedido-form">
+          <div class="form-heading">
+            <span class="form-number">01 / Seu pedido</span>
+            <h3>Vamos começar?</h3>
+            <p>Preencha os campos e copie sua mensagem ao final.</p>
+          </div>
+          <div class="form-grid">
+            <div class="field"><label for="nome">Seu nome *</label><input id="nome" name="nome" type="text" autocomplete="name" required placeholder="Como podemos chamar você?"></div>
+            <div class="field"><label for="telefone">Telefone</label><input id="telefone" name="telefone" type="tel" autocomplete="tel" placeholder="(00) 00000-0000"></div>
+            <div class="field"><label for="produto">O que deseja? *</label><select id="produto" name="produto" required><option value="" disabled selected>Selecione uma opção</option><option value="Bolos">Bolos</option><option value="Doces">Doces</option><option value="Salgados">Salgados</option></select></div>
+            <div class="field"><label for="data">Data desejada</label><input id="data" name="data" type="date"></div>
+            <div class="field field-full"><label for="mensagem">Detalhes da encomenda *</label><textarea id="mensagem" name="mensagem" required placeholder="Conte sobre a ocasião, a quantidade e os sabores que você deseja..."></textarea></div>
+          </div>
+          <button class="button button-primary form-submit" type="submit" data-contact-button>Montar e copiar mensagem <span aria-hidden="true">↗</span></button>
+          <p class="form-helper">Este formulário apenas copia a mensagem. Ele não envia o pedido automaticamente.</p>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <section class="contact-bottom container">
+      <span aria-hidden="true">✳</span>
+      <p class="eyebrow">Inspiração para escolher</p>
+      <h2>Quer conhecer nossas <em>delícias?</em></h2>
+      <a class="button button-primary" href="produtos.html">Ver produtos <span aria-hidden="true">↗</span></a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-main"><div><a class="brand footer-brand" href="index.html" aria-label="Xanda, página inicial"><span class="brand-word">xanda<b>.</b></span><small>feito com carinho</small></a><p>Sabores que acompanham histórias<br>e deixam tudo mais especial.</p></div><nav aria-label="Links do rodapé"><a href="index.html">Início</a><a href="produtos.html">Produtos</a><a href="contato.html">Contato</a></nav><a class="footer-top" href="#conteudo">Voltar ao topo ↑</a></div>
+    <div class="container footer-bottom"><span>© <span class="year">2026</span> Xanda. Feito com carinho.</span><span>Bolos • Doces • Salgados</span></div>
+  </footer>
+</body>
+</html>
