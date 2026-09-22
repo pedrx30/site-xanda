@@ -63,11 +63,8 @@
     productField.value = productValues[requestedProduct];
   }
 
-  // Preencha com o número comercial, incluindo país e DDD, para abrir o pedido no WhatsApp.
-  const whatsappNumber = '';
-  const button = form.querySelector('[data-contact-button]');
+  const whatsappNumber = '5547997192457';
   const status = form.querySelector('#form-status');
-  if (whatsappNumber) button.firstChild.textContent = 'Continuar pelo WhatsApp ';
 
   const formatDate = value => {
     if (!value) return '';
@@ -75,26 +72,7 @@
     return year && month && day ? `${day}/${month}/${year}` : value;
   };
 
-  const copyMessage = async message => {
-    if (navigator.clipboard && window.isSecureContext) {
-      try {
-        await navigator.clipboard.writeText(message);
-        return true;
-      } catch (_) {}
-    }
-    const temporary = document.createElement('textarea');
-    temporary.value = message;
-    temporary.setAttribute('readonly', '');
-    temporary.style.position = 'fixed';
-    temporary.style.opacity = '0';
-    document.body.appendChild(temporary);
-    temporary.select();
-    const copied = document.execCommand('copy');
-    temporary.remove();
-    return copied;
-  };
-
-  form.addEventListener('submit', async event => {
+  form.addEventListener('submit', event => {
     event.preventDefault();
     if (!form.reportValidity()) return;
 
@@ -110,41 +88,17 @@
       return;
     }
     const lines = [
-      'Olá, Xanda! Gostaria de fazer uma encomenda.',
+      'Olá, Xanda! Gostaria de fazer um pedido.',
       '',
       `Nome: ${name}`,
-      ...(phone ? [`Telefone: ${phone}`] : []),
-      `Produto: ${product}`,
-      ...(date ? [`Data desejada: ${date}`] : []),
-      `Detalhes: ${details}`
+      `Telefone: ${phone || 'Não informado'}`,
+      `O que desejo: ${product}`,
+      `Data desejada: ${date || 'Não informada'}`,
+      `Detalhes da encomenda: ${details}`
     ];
     const message = lines.join('\n');
-
-    if (whatsappNumber) {
-      window.location.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-      return;
-    }
-
-    try {
-      const copied = await copyMessage(message);
-      if (copied) {
-        status.textContent = 'Mensagem copiada! Agora você pode enviá-la para a Xanda pelo seu canal de contato.';
-      } else {
-        throw new Error('Cópia indisponível');
-      }
-    } catch (_) {
-      let draft = form.querySelector('.message-draft');
-      if (!draft) {
-        draft = document.createElement('textarea');
-        draft.className = 'message-draft';
-        draft.setAttribute('aria-label', 'Mensagem do pedido para copiar');
-        draft.readOnly = true;
-        form.appendChild(draft);
-      }
-      draft.value = message;
-      draft.focus();
-      draft.select();
-      status.textContent = 'Selecione e copie a mensagem exibida abaixo para enviar à Xanda.';
-    }
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    status.textContent = 'WhatsApp aberto com sua mensagem pronta.';
   });
 })();
