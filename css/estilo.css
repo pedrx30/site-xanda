@@ -337,3 +337,31 @@ h1 em, h2 em { color: var(--berry); font-weight: 500; }
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .js .reveal { opacity: 1; transform: none; }
 }
+/* Real cake photography and mobile-first gallery */
+.hero-visual img.real-cake-hero { object-fit: cover; object-position: center; }
+.category-card:first-child .category-image img.real-cake-hero { object-fit: contain; object-position: center; background: var(--cream); }
+.cake-carousel { min-width: 0; width: calc(100% - 15px); }
+.cake-carousel .product-photo { width: 100%; height: min(420px, 105vw); background: var(--cream); }
+.cake-frame { position: relative; overflow: hidden; width: 100%; height: 100%; border-radius: 220px 220px 10px 10px; background: var(--cream); touch-action: pan-y pinch-zoom; }
+.cake-frame .cake-photo { position: absolute; inset: 0; width: 100%; height: 100%; border-radius: 0; object-fit: contain; object-position: center; opacity: 0; transition: opacity 650ms cubic-bezier(.22, .61, .36, 1); pointer-events: none; user-select: none; }
+.cake-frame .cake-photo.is-active { opacity: 1; }
+.cake-controls { align-items: center; justify-content: space-between; gap: 12px; margin-top: 25px; }
+.cake-controls:not([hidden]) { display: flex; }
+.cake-counter { color: var(--berry); font-size: .75rem; font-weight: 600; letter-spacing: .12em; font-variant-numeric: tabular-nums; }
+.cake-control-buttons { display: flex; gap: 8px; }
+.cake-control { display: inline-grid; place-items: center; width: 44px; height: 44px; padding: 10px; border: 1px solid var(--line); border-radius: 50%; background: var(--paper); color: var(--berry); transition: background .2s ease, border-color .2s ease; }
+.cake-control:hover, .cake-control:focus-visible { border-color: var(--berry); background: var(--blush); }
+.cake-control .icon { font-size: 1.05rem; }
+.cake-control .play-icon, .cake-control.is-paused .pause-icon { display: none; }
+.cake-control.is-paused .play-icon { display: inline-block; }
+.cake-thumbs { position: relative; gap: 8px; overflow-x: auto; max-width: 100%; padding: 12px 4px 8px; scroll-snap-type: x proximity; scrollbar-width: thin; scrollbar-color: var(--rose) transparent; }
+.cake-thumbs:not([hidden]) { display: flex; }
+.cake-thumb { flex: 0 0 58px; width: 58px; height: 58px; padding: 3px; border: 1px solid var(--line); border-radius: 8px; background: var(--cream); scroll-snap-align: center; transition: border-color .2s ease, box-shadow .2s ease; }
+.cake-thumb img { width: 100%; height: 100%; object-fit: contain; border-radius: 5px; }
+.cake-thumb[aria-pressed="true"] { border-color: var(--berry); box-shadow: 0 0 0 1px var(--berry); }
+@media (min-width: 621px) {
+  .cake-carousel { width: 100%; }
+  .cake-carousel .product-photo { height: 370px; }
+}
+@media (min-width: 781px) { .cake-carousel .product-photo { height: 440px; } }
+@media (min-width: 1051px) { .cake-carousel .product-photo { height: 510px; } }

@@ -50,6 +50,138 @@
     revealElements.forEach(element => observer.observe(element));
   }
 
+  document.querySelectorAll('.cake-carousel').forEach(carousel => {
+    const frame = carousel.querySelector('.cake-frame');
+    const photos = [...frame.querySelectorAll('.cake-photo')];
+    const thumbs = [...carousel.querySelectorAll('.cake-thumb')];
+    const strip = carousel.querySelector('.cake-thumbs');
+    const counter = carousel.querySelector('.cake-counter');
+    const play = carousel.querySelector('[data-cake-play]');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let current = 0;
+    let requested = 0;
+    let revision = 0;
+    let timer;
+    let paused = reducedMotion.matches;
+    let visible = !('IntersectionObserver' in window);
+    let touching = false;
+    let hovering = false;
+    let focused = false;
+    let pointerStart;
+
+    carousel.querySelector('.cake-controls').hidden = false;
+    strip.hidden = false;
+    const updatePlayback = () => {
+      play.classList.toggle('is-paused', paused);
+      play.setAttribute('aria-pressed', String(paused));
+      play.setAttribute('aria-label', paused ? 'Iniciar passagem automática' : 'Pausar passagem automática');
+      counter.setAttribute('aria-live', paused ? 'polite' : 'off');
+    };
+    const schedule = () => {
+      window.clearTimeout(timer);
+      if (!paused && visible && !touching && !hovering && !focused && !document.hidden) {
+        timer = window.setTimeout(() => show(current + 1), 3000);
+      }
+    };
+    const show = async index => {
+      window.clearTimeout(timer);
+      requested = (index + thumbs.length) % thumbs.length;
+      const target = requested;
+      const request = ++revision;
+      const incoming = photos.find(photo => !photo.classList.contains('is-active'));
+      incoming.src = thumbs[target].dataset.cakeSrc;
+      try {
+        await incoming.decode();
+      } catch {
+        if (request === revision) schedule();
+        return;
+      }
+      if (request !== revision) return;
+      photos.forEach(photo => {
+        const active = photo === incoming;
+        photo.alt = active ? thumbs[target].dataset.cakeAlt : '';
+        photo.setAttribute('aria-hidden', String(!active));
+        photo.classList.toggle('is-active', active);
+      });
+      current = target;
+      counter.textContent = `${String(current + 1).padStart(2, '0')} / ${thumbs.length}`;
+      thumbs.forEach((thumb, i) => thumb.setAttribute('aria-pressed', String(i === current)));
+      const selected = thumbs[current];
+      strip.scrollTo({ left: selected.offsetLeft - (strip.clientWidth - selected.offsetWidth) / 2, behavior: reducedMotion.matches ? 'instant' : 'smooth' });
+      const nextPhoto = new Image();
+      nextPhoto.src = thumbs[(current + 1) % thumbs.length].dataset.cakeSrc;
+      schedule();
+    };
+    carousel.querySelector('[data-cake-prev]').addEventListener('click', () => show(requested - 1));
+    carousel.querySelector('[data-cake-next]').addEventListener('click', () => show(requested + 1));
+    thumbs.forEach((thumb, i) => thumb.addEventListener('click', () => show(i)));
+    play.addEventListener('click', () => {
+      paused = !paused;
+      updatePlayback();
+      schedule();
+    });
+    frame.addEventListener('keydown', event => {
+      const actions = { ArrowLeft: requested - 1, ArrowRight: requested + 1, Home: 0, End: thumbs.length - 1 };
+      if (event.key in actions) {
+        event.preventDefault();
+        show(actions[event.key]);
+      }
+    });
+    frame.addEventListener('pointerdown', event => {
+      if (!event.isPrimary || (event.pointerType === 'mouse' && event.button !== 0)) return;
+      pointerStart = { x: event.clientX, y: event.clientY };
+      touching = true;
+      window.clearTimeout(timer);
+      frame.setPointerCapture(event.pointerId);
+    });
+    const finishGesture = event => {
+      if (!pointerStart) return;
+      const dx = event.clientX - pointerStart.x;
+      const dy = event.clientY - pointerStart.y;
+      pointerStart = undefined;
+      touching = false;
+      if (event.type !== 'pointercancel' && Math.abs(dx) > 35 && Math.abs(dx) > Math.abs(dy) * 1.3) {
+        show(requested + (dx < 0 ? 1 : -1));
+      } else schedule();
+    };
+    frame.addEventListener('pointerup', finishGesture);
+    frame.addEventListener('pointercancel', finishGesture);
+    carousel.addEventListener('pointerenter', event => {
+      if (event.pointerType !== 'mouse') return;
+      hovering = true;
+      window.clearTimeout(timer);
+    });
+    carousel.addEventListener('pointerleave', event => {
+      if (event.pointerType !== 'mouse') return;
+      hovering = false;
+      schedule();
+    });
+    carousel.addEventListener('focusin', event => {
+      focused = event.target !== play && event.target.matches(':focus-visible');
+      schedule();
+    });
+    carousel.addEventListener('focusout', event => {
+      focused = carousel.contains(event.relatedTarget) && event.relatedTarget !== play && event.relatedTarget.matches(':focus-visible');
+      schedule();
+    });
+    document.addEventListener('visibilitychange', schedule);
+    reducedMotion.addEventListener('change', () => {
+      paused = reducedMotion.matches;
+      updatePlayback();
+      schedule();
+    });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(entries => {
+        visible = entries[0].isIntersecting;
+        schedule();
+      }, { threshold: 0.25 }).observe(frame);
+    }
+    const nextPhoto = new Image();
+    nextPhoto.src = thumbs[1].dataset.cakeSrc;
+    updatePlayback();
+    schedule();
+  });
+
   const form = document.querySelector('#pedido-form');
   if (!form) return;
 
