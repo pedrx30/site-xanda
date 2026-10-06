@@ -194,7 +194,7 @@ h1 em, h2 em { color: var(--berry); font-weight: 500; }
 .field { display: flex; flex-direction: column; gap: 9px; min-width: 0; }
 .field-full { grid-column: 1 / -1; }
 .field label { font-size: .8rem; font-weight: 700; }
-.field input, .field select, .field textarea { width: 100%; min-height: 49px; padding: 12px 14px; border: 1px solid #e6d8d5; border-radius: 4px; outline: none; background: #fff; color: var(--ink); font-size: .84rem; transition: border-color .2s ease, box-shadow .2s ease; }
+.field input, .field select, .field textarea { width: 100%; min-height: 49px; padding: 12px 14px; border: 1px solid #e6d8d5; border-radius: 4px; outline: none; background: #fff; color: var(--ink); font-size: 16px; transition: border-color .2s ease, box-shadow .2s ease; }
 .field textarea { min-height: 128px; resize: vertical; line-height: 1.6; }
 .field input::placeholder, .field textarea::placeholder { color: #a69799; }
 .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--berry); box-shadow: 0 0 0 3px rgba(139, 54, 82, .12); }
