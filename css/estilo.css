@@ -214,7 +214,7 @@ h1 em, h2 em { color: var(--berry); font-weight: 500; }
 
 /* Motion */
 @keyframes fade-up { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes bob { 0%, 100% { transform: rotate(-12deg) translateY(0); } 50% { transform: rotate(-12deg) translateY(-10px); } }
+@keyframes bob { 0%, 100% { transform: rotate(var(--bob-rotation, -12deg)) translateY(0); } 50% { transform: rotate(var(--bob-rotation, -12deg)) translateY(-10px); } }
 @keyframes ticker { to { transform: translateX(-50%); } }
 .js .reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s ease, transform .7s ease; }
 .js .reveal.is-visible { opacity: 1; transform: translateY(0); }
@@ -365,3 +365,6 @@ h1 em, h2 em { color: var(--berry); font-weight: 500; }
 }
 @media (min-width: 781px) { .cake-carousel .product-photo { height: 440px; } }
 @media (min-width: 1051px) { .cake-carousel .product-photo { height: 510px; } }
+
+.contact-hero-image img.real-cake-contact { object-position: center 60%; }
+.contact-hero-sticker { --bob-rotation: 12deg; animation: bob 5s ease-in-out infinite; }
