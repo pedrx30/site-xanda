@@ -398,3 +398,19 @@ h1 em, h2 em { color: var(--berry); font-weight: 500; }
   .contact-hero-sticker { width: 105px; height: 105px; border-width: 6px; }
   .contact-hero-sticker strong { font-size: 1.12rem; }
 }
+
+/* Continuous card photograph and discreet footer contact links. */
+.category-card:first-child .category-image img.real-cake-card { object-fit: cover; object-position: center; }
+.footer-main > .footer-actions { display: flex; flex-direction: column; align-items: flex-start; align-self: flex-start; gap: 2px; width: auto; margin-left: auto; }
+.footer-actions .footer-top { margin-left: 0; }
+.footer-social { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: #f3e5e8; font-size: .82rem; transition: color .2s ease; }
+.footer-social:hover { color: #ffb8c7; }
+.footer-social .icon { font-size: 1rem; }
+@media (min-width: 621px) { .footer-main > .footer-actions { margin-left: 25px; } }
+@media (min-width: 1051px) { .footer-main > .footer-actions { margin-left: 80px; } }
+@media (max-width: 390px) { .footer-main > .footer-actions { margin-left: 0; } }
+
+/* Keep the date box within the same width as the other form controls. */
+.field input[type="date"] { display: block; width: 100%; min-width: 0; max-width: 100%; box-sizing: border-box; -webkit-appearance: none; appearance: none; }
+.field input[type="date"]::-webkit-date-and-time-value { min-width: 0; }
+.field input[type="date"]::-webkit-datetime-edit { min-width: 0; padding: 0; }
