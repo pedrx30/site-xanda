@@ -388,3 +388,13 @@ h1 em, h2 em { color: var(--berry); font-weight: 500; }
   .cake-carousel .product-photo { height: 490px; }
 }
 @media (min-width: 1051px) { .cake-carousel .product-photo { height: 570px; } }
+
+/* Contact seal matches the stacked type and cream edge of the home seal. */
+.contact-hero-sticker { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 128px; height: 128px; border: 8px solid var(--cream); }
+.contact-hero-sticker > span { font-size: .58rem; font-weight: 700; letter-spacing: .13em; line-height: 1; text-transform: uppercase; }
+.contact-hero-sticker strong { margin: 4px 0; font-size: 1.35rem; font-weight: 500; line-height: .95; }
+.contact-hero-sticker .icon { display: block; font-size: .85rem; }
+@media (max-width: 620px) {
+  .contact-hero-sticker { width: 105px; height: 105px; border-width: 6px; }
+  .contact-hero-sticker strong { font-size: 1.12rem; }
+}
