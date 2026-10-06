@@ -207,6 +207,11 @@ h1 em, h2 em { color: var(--berry); font-weight: 500; }
 .contact-bottom > span { color: var(--berry); font-size: 2rem; }
 .contact-bottom h2 { max-width: 770px; margin: 18px auto 30px; }
 
+/* Instagram contact link */
+.contact-social { display: flex; margin-top: 16px; }
+.button-instagram { max-width: 100%; gap: 12px; border-color: var(--berry); background: transparent; color: var(--berry); }
+.button-instagram:hover { background: var(--blush); }
+
 /* Motion */
 @keyframes fade-up { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes bob { 0%, 100% { transform: rotate(-12deg) translateY(0); } 50% { transform: rotate(-12deg) translateY(-10px); } }
